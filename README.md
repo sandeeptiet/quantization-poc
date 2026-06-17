@@ -79,20 +79,23 @@ from llama_cpp import Llama
 llm = Llama(model_path="model.gguf", n_gpu_layers=-1)
 ```
 
+## Download mistral 7B model 
+```
+  mkdir ~/models
+  cd ~/models
+  curl -L "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q4_K_M.gguf" -o mistral-7b-instruct-v0.2.Q4_K_M.gguf
+```
+
+## Code execution steps
+```
+cd /Users/sandeepkapoor/Desktop/prep/quantization-poc
+source .venv/bin/activate
+python benchmark_gguf.py
+```
+
+## Output
 
 ```
-source .venv/bin/activate
-
-mkdir ~/models
-
-cd ~/models
-
-curl -L "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q4_K_M.gguf" -o mistral-7b-instruct-v0.2.Q4_K_M.gguf
-
-cd /Users/sandeepkapoor/Desktop/prep/quantization-poc
-
-python benchmark_gguf.py
-
 (quantization-poc) sandeepkapoor@Sandeeps-MacBook-Air quantization-poc % python benchmark_gguf.py
 =================================================================
   GGUF QUANTIZATION BENCHMARK — Apple Silicon MacBook Air
@@ -175,7 +178,7 @@ In supervised l..."
     Speed-up vs FP16 (est.):          3.5x faster
 
 =================================================================
-  INTERVIEW STORY:
+  STORY:
   'I benchmarked Mistral-7B Q4_K_M on my MacBook Air M-series.
    Model loaded in 3s, used 3.0 GB RAM (vs ~14 GB for FP16),
    and generated at 25 tok/s — roughly 4x faster than
